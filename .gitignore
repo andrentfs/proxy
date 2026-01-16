@@ -1,0 +1,20 @@
+# Configurações sensíveis
+config.yaml
+
+# Binários e pacotes gerados
+fyne-cross/
+proxy-gui.app/
+test-pod
+proxy
+relay
+test_build
+*.exe
+*.zip
+*.tar.xz
+
+# Logs
+proxy.log
+*.log
+
+# OS
+.DS_Store

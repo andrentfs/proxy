@@ -8,6 +8,7 @@ import (
 	"log"
 	"net"
 	"os"
+	"path/filepath"
 	"time"
 
 	"fyne.io/fyne/v2"
@@ -30,10 +31,23 @@ type Config struct {
 }
 
 func loadConfig() (*Config, error) {
-	data, err := os.ReadFile("config.yaml")
+	// Procurar no diretório atual
+	configPath := "config.yaml"
+	data, err := os.ReadFile(configPath)
+
+	// Se não achar, procurar na mesma pasta do executável
+	if err != nil {
+		if execPath, errExec := os.Executable(); errExec == nil {
+			execDir := filepath.Dir(execPath)
+			configPath = filepath.Join(execDir, "config.yaml")
+			data, err = os.ReadFile(configPath)
+		}
+	}
+
 	if err != nil {
 		return nil, err
 	}
+
 	var cfg Config
 	err = yaml.Unmarshal(data, &cfg)
 	if err != nil {

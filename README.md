@@ -86,6 +86,8 @@ fyne-cross darwin -app-id com.proxy.manager -arch amd64 ./cmd/proxy-gui/
 
 Os executáveis serão gerados na pasta `fyne-cross/bin/`.
 
+> **🍏 Guia para o Usuário Final (Mac)**: Preparamos um guia simplificado para você enviar junto com o app para usuários de macOS. Veja em: [README-MAC-USER.md](./README-MAC-USER.md).
+
 > **💡 Dica de Distribuição**: Você pode disponibilizar diretamente os arquivos `.exe` (Windows), `.tar.gz` (Linux) ou `.app` (Mac). Lembre-se apenas de que o usuário final deve colocar o arquivo `config.yaml` na mesma pasta do executável.
 
 ---
@@ -128,7 +130,7 @@ Este projeto é open-source e focado na comunidade de engenharia de dados e web 
 
 ## 💡 Sobre o Autor
 
-Desenvolvi esta ferramenta para resolver problemas reais de extração de dados em escala, onde a reputação de IP é o fator crítico de sucesso. Se isso te ajudou, me dê um alô no LinkedIn!
+Desenvolvi esta ferramenta para resolver problemas reais de extração de dados em escala, onde a reputação de IP é o fator crítico de sucesso. Se isso te ajudou, me dê um alô no [LinkedIn](https://www.linkedin.com/in/andrentfs/)!
 
 ---
 
