@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: egress-proxy
+  namespace: my-namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: egress-proxy
+  template:
+    metadata:
+      labels:
+        app: egress-proxy
+    spec:
+      containers:
+      - name: relay
+        image: us-central1-docker.pkg.dev/buscamilhas-481622/proxy-egress/proxy-egress:v1
+        command: ["./relay"]
+        ports:
+        - containerPort: 1080
+          name: socks5
+        - containerPort: 8080
+          name: tunnel
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: egress-proxy
+  namespace: my-namespace
+spec:
+  type: LoadBalancer # Permite conexão externa sem port-forward
+  selector:
+    app: egress-proxy
+  ports:
+    - protocol: TCP
+      name: socks5
+      port: 1080
+      targetPort: 1080
+    - protocol: TCP
+      name: tunnel
+      port: 8080
+      targetPort: 8080

@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-pod
+  namespace: my-namespace
+spec:
+  containers:
+  - name: alpine
+    image: curlimages/curl
+    command: ["sh", "-c", "sleep 1h"]
+    env:
+    - name: HTTP_PROXY
+      value: "socks5://egress-proxy.my-namespace.svc.cluster.local:1080"
+    - name: HTTPS_PROXY
+      value: "socks5://egress-proxy.my-namespace.svc.cluster.local:1080"
+    - name: ALL_PROXY
+      value: "socks5://egress-proxy.my-namespace.svc.cluster.local:1080"
